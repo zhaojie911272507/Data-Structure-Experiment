@@ -12,6 +12,7 @@ bool InitList(LinkList &L){
 	L->next=NULL;	//头结点之后暂时还没有结点 
 	return true;	 
 } 
+
 //在第i个位置插入元素e（带头结点)
 bool ListInsert(LinkList &L,int i,ElemType e){
 	if(i<1)
