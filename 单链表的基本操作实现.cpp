@@ -40,7 +40,7 @@ bool Empty(LinkList L){
 		return false;
 }
  
-//选做
+//待完善 
 //创建一个值递增有序的单链表
 void CreateList1(LinkList &L,int n)
 {

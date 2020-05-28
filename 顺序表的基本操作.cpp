@@ -5,7 +5,7 @@
 using namespace std;
 #define MaxSize 100    //顺序表初始化时分配的存储空间长度 
 typedef struct{
-    int *elem;    		//指示动态分配数组的指针
+    int elem[MaxSize];    		//指示动态分配数组的指针
     int length;           //顺序表的当前长度
 }SqList;                  //顺序表的类型定义
 //基本操作--初始化一个顺序表
