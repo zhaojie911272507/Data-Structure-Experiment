@@ -1,7 +1,8 @@
-#include <iostream.h>
-#include <stdlib.h>
-#include <time.h>
-
+#include<iostream>
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+using namespace std;
 typedef struct LNode{
 	int data;
 	struct LNode *next;
@@ -32,7 +33,7 @@ void CreateList(LinkList &L,int n)
 	r->next =NULL;   //最后一个结点指针域置为空
 }
 //判断单链表是否为空（带头结点） 
-bool Empty(LinkList){
+bool Empty(LinkList L){
 	if(L->next==NULL)
 		return true;
 	else
@@ -50,18 +51,18 @@ void CreateList1(LinkList &L,int n)
 //前插法建表，本例中使用[1,100]内的随机整数填充单链表L,参数n表示要向表中填充几个数据
 void CreateList2(LinkList &L,int n)
 {
-	LNodee *s;int x;
+	LNode *s;int x;
 	L=(LinkList)malloc(sizeof(LNode));//创建头结点
 	L->next=NULL;//初始为空链表
 	srand(time(0));   //设置随机数种子
-	for(i=0;i<n;i++)   //向单链表L中填充n个[1,100]内的随机整数
+	for(int i=0;i<n;i++)   //向单链表L中填充n个[1,100]内的随机整数
 	{
 		s=new LNode;
 		s->data =rand()%100+1;
 		s->next =L->next;//将新结点插入表中，L为头指针 
 		L->next=s;
 	}
-	return L; 
+	
 }
 
 //输出单链表L 中的元素
@@ -70,8 +71,8 @@ void PrintList(LinkList L)
 	LNode *p=L->next ;
 	while(p)
 	{
-		cout<<p->data <<"  ";
-		p=p->next ;
+		cout<<p->data<<"  ";
+		p=p->next;
 	}
 	cout<<endl;
 }
@@ -80,23 +81,22 @@ void PrintList(LinkList L)
 //在单链表L 中查找元素e的位置，查找成功，返回指向e的指针
 LNode *LocateElem(LinkList L,int e)
 {
-	LNode *p;
-	for(int r=p;r->next!=NULL;r++){
-		if(r->next==e)
-			return r->next;
-	}
-
+	LNode *p=L->next;
+	//从第一个结点开始查找数据域为e的结点
+	while(p!=NULL && p->data!=e)
+		p=p->next;
+	return p;//找到后返回该结点指针，否则发返回NULL 
 }
 
 
 //在单链表L的第i个结点前插入一个新元素e，插入成功，返回true,插入失败，返回false
-bool ListInsert(LinkList &L,int i,ElemType e){
+bool ListInsert(LinkList &L,int i,int e){
 	if(i<1)
 		return false;
 	LNode *p;//指针p指向当前扫描到的结点
 	int j=0; //当前p指向的是第几个结点 
 	p=L;	 //L指向头结点，头结点是第0个结点
-	while(P!-NULL && j<i-1){//循环找到第i-1个结点
+	while(p!=NULL && j<i-1){//循环找到第i-1个结点
 		p=p->next;
 		j++; 
 	}
@@ -104,7 +104,7 @@ bool ListInsert(LinkList &L,int i,ElemType e){
 		return false;
 	LNode *s=(LNode *)malloc(sizeof(LNode));
 	s->data=e;
-	s-next=p->next;
+	s->next=p->next;
 	p->next=s;//将结点s连到p
 	return true; 
 } 

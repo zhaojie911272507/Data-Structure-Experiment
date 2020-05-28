@@ -1,6 +1,8 @@
-#include<iostream.h> 
+#include<iostream> 
+#include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+using namespace std;
 #define MaxSize 100    //顺序表初始化时分配的存储空间长度 
 typedef struct{
     int *elem;    		//指示动态分配数组的指针
@@ -59,7 +61,7 @@ bool ListInsert(SqList &L,int i,int e){
 bool ListDelete(SqList &L,int i,int &e){
 	if(i<1||i>L.length)		//判断i的范围是否有效
 		return false;
-	e=L.data[i-1];			//将被删除的元素赋值给e
+	e=L.elem[i-1];			//将被删除的元素赋值给e
 	for(int j=i;j<L.length;j++)
 		L.elem[j-1]=L.elem[j];
 	L.length--;				//线性表长度减1 
@@ -72,12 +74,12 @@ int main(){
     cout<<"顺序表L初始化成功"<<endl;
 	cout<<"请输入要完成创建的顺序表的长度"<<endl;
 	cin>>n;
-	CreateList(length,n);
+	CreateList(L,n);
 	cout<<"顺序表L创建成功,表中元素为："<<endl;
 	PrintList(L);
-	cout<<"请输入要查找的元素的值"：
+	cout<<"请输入要查找的元素的值";
 	cin>>e;
-	pos=LocateElem(L.e);
+	pos=LocateElem(L,e);
 	cout<<"元素"<<e<<"在表中的位序为"<<pos<<endl;
 	cout<<"请输入插入位置及插入的值"<<endl;
 	cin>>pos>>e;
@@ -86,7 +88,7 @@ int main(){
     	cout<<"插入操作成功，表中元素为："<<endl;
 		PrintList(L); 
 	}else{
-		couot<<"插入失败！"<<endl; 
+		cout<<"插入失败！"<<endl; 
 	}
 	
 	cout<<"请输入删除元素的位置"<<endl;
@@ -97,5 +99,5 @@ int main(){
 		PrintList(L);
 	} else
 		cout<<"删除位置错误，操作失败！"<<endl;
-	return 1;
+	return 0;
 }
