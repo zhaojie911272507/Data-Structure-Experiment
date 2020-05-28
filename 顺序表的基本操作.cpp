@@ -39,7 +39,7 @@ int GetElem(SqList L,int i){
 //在顺序表L中查找元素e的位置，查找成功，返回e在L中的位序
 int LocateElem(SqList L,int e){
 	int i;
-	for(i<0;i<L.length;i++)
+	for(i=0;i<L.length;i++)
 		if(L.elem[i]==e)
 		 return i+1;//数组下标为i的元素值等于e，返回其位序i+1 
 	return 0;		//退出循环，说明查找失败 	
