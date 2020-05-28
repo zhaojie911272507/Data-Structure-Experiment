@@ -174,6 +174,6 @@ int main()
 	else
 		cout<<"É¾³ıÎ»ÖÃ´íÎó£¬²Ù×÷Ê§°Ü£¡"<<endl;
 	
-	return 1;
+	return 0;
 }
 
