@@ -42,3 +42,4 @@ typedef struct{
  	x=S.data[S.top];//x¼ÇÂ¼Õ»¶¥ÔªËØ 
  	return true;
  } 
+ 

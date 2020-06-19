@@ -1,9 +1,9 @@
-#include<iostream.h>
+#include<iostream>
 #include<stdlib.h>
  
 #define MAXSIZE 100 //顺序栈初始时分配的存储空间长度
 
-typedef struct {
+typedef struct {	
 	char *base;		//栈底指针，栈中元素为字符
 	char *top;		//栈顶指针
 	int stacksize;	//栈可用的最大容量 
@@ -14,34 +14,39 @@ void InitStack(SqStack &S){
 	S.base=(char *)malloc(MAXSIZE*sizeof(char));//为S分配存储空间，也可以使用下面注释掉的语句 、 
 	//S.base=new char[MAXSIZE];
 	if(!S.base) exit(-1);
-	S.top=S.base;//空栈时，s.top和 s.base均指向栈底
-	S.stacksize=MAXSIZE;//初始化栈的最大容量为MAXSIZE 
-
+	S.top=S.base;			//空栈时，s.top和 s.base均指向栈底
+	S.stacksize=MAXSIZE;	//初始化栈的最大容量为MAXSIZE 
 } 
 //入栈操作，向顺序栈S的栈顶S的栈顶插入新元素e，插入成功，返回true， 插入失败，返回false
 bool Push(SqStack &S,char e){
-	
+	S.base=(char *)realloc(S.base(S.stacksize+1)*sizeof(char));
+	if(!S.base) exit (-1);
+	S.top=S.base+S.stacksize;
+	S.stacksize+=STACKINCREMENT; 
 	return true; 
 } 
 
 //出栈操作，删除顺序栈S的栈顶元素，被删元素用参数e返回，删除成功。函数返回true，删除失败，函数返回false
 bool Pop(SqStack &S,char &e){
-	
-	
+	if(S.top==S.base) 
+		return false;
+	e=*--S.top;//S.top--;e=S.top; 
 	return true;
-} 
+}
 
 //取顺序栈S的栈顶元素，用参数e返回取得的栈顶元素
 bool GetTop(SqStack S,char &e){
-	
-	
+	if(S.top==S.base)	 
+ 		return false;
+ 	e=*(S.top-1);//x记录栈顶元素 
 	return true;
 } 
 //求顺序栈S的长度
 int StackLength(SqStack S){
-	
+	if(S.top!=S.base){
+		
+	}
 	return 1;
-
 }
 
 //输出顺序栈S中的元素（从栈顶到栈顶的顺序输出）
